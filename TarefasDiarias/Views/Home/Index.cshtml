@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TarefasDiarias.Models.Tarefa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tarefas de hoje</h2>
+<hr />
+
+<p>
+    <button onclick="location.href = '@Url.Action("Create", "Home")'"
+            type="button"
+            class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar tarefa
+    </button>
+</p>
+
+<table class="table">
+    @* Table columns titles *@
+    <tr>
+        <th style="text-align:center;">@Html.DisplayNameFor(model => model.Titulo)</th>
+        <th style="text-align:center;">@Html.DisplayNameFor(model => model.Detalhes)</th>
+        <th style="text-align:center;">@Html.DisplayNameFor(model => model.DataCriacao)</th>
+        <th style="text-align:center;">@Html.DisplayNameFor(model => model.DataExecucao)</th>
+        <th style="text-align:center;">@Html.DisplayNameFor(model => model.Concluida)</th>
+        <th></th>
+    </tr>
+
+    @* Table items *@
+    @foreach (var item in Model) {
+        <tr>
+            <td style="text-align:center;">@Html.DisplayFor(modelItem => item.Titulo)</td>
+            <td style="text-align:center;">@Html.DisplayFor(modelItem => item.Detalhes)</td>
+            <td style="text-align:center;">@Convert.ToDateTime(item.DataCriacao).ToString("dd/MM/yyyy - HH:mm")</td>
+            <td style="text-align:center;">@Convert.ToDateTime(item.DataExecucao).ToString("dd/MM/yyyy - HH:mm")</td>
+            <td style="text-align:center;">@Html.DisplayFor(modelItem => item.Concluida)</td>
+
+            <td>
+                <button onclick="location.href = '@Url.Action("Edit", "Home", new {id = item.Id})'"
+                        type="button"
+                        class="btn btn-primary btn-xs">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+
+                <button onclick="location.href = '@Url.Action("Delete", "Home", new {id = item.Id})'"
+                        type="button"
+                        class="btn btn-danger btn-xs"
+                        data-id="@item.Id">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Excluir
+                </button>
+
+            </td>
+        </tr>
+    }
+</table>

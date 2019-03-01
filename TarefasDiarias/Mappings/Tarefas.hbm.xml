@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="TarefasDiarias.Models.Tarefa, TarefasDiarias" table="tasks_table">
+    <!-- CHAVE PRIMARIA -->
+    <id name="Id" column="id" type="String">
+      <generator class="uuid.hex" />
+    </id>
+
+    <!-- OUTROS CAMPOS DO BANCO -->
+    <property name="Titulo" column="title" type="String" length="50"/>
+    <property name="Detalhes" column="details" type="String" length="100"/>
+    <property name="DataCriacao" column="creationdate" type="Timestamp"/>
+    <property name="DataExecucao" column="finaldate" type="Timestamp"/>
+    <property name="Concluida" column="isdone" type="Boolean"/>
+  </class>
+</hibernate-mapping>
