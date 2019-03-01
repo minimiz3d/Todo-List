@@ -6,6 +6,7 @@ using NHibernate;
 using NHibernate.Cfg;
 
 namespace TarefasDiarias {
+    // Provedor de objetos sob demanda (https://nhibernate.info/doc/tutorials/first-nh-app/your-first-nhibernate-based-application.html)
     public class NHibernateHelper {
         private static ISessionFactory _sessionFactory;
 

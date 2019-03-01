@@ -8,6 +8,7 @@ using NHibernate;
 using TarefasDiarias.Models;
 
 namespace TarefasDiarias.Controllers {
+    // Implementa os métodos CRUD
     public class HomeController : Controller {
         // GET: Todas as tarefas registradas
         public ActionResult Index() {
